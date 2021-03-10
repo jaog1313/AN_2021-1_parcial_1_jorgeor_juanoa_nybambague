@@ -58,7 +58,7 @@ public:
     while(iter<=max_iter){
       
       double x2 = x1 - ((f(x1)*(x0-x1))/(f(x0)-f(x1)));
-      double erp = fabs(((x2-x1)/x2)*100);
+      double erp = fabs(((x2-x1)/x2));
       
       
       
@@ -72,7 +72,7 @@ public:
       x1 = x2;
       iter ++;
     }
-    return true;
+    return false;
   }
   
 private:

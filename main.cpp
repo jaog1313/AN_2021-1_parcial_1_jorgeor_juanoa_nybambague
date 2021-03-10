@@ -3,10 +3,6 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
-
-
-
-
 #include "reglafalsa.h"
 #include "newtonraphson.h"
 #include "secante.h"
@@ -50,13 +46,6 @@ void raices_caso_1() {
   int iteracciones = 100;
   double tolerancia = 100;
   
- 
-  
-  
-  cout << "CALCULO DE LAS RAICES DE UNA FUNCION CASO 1\n";
-  
- 
-  
   
 
   
@@ -95,8 +84,8 @@ void raices_caso_1() {
   bool resultadorf = rf.raiz (
                            xr,
                            xa,
-                           tolerancia,
-                           max_iter,
+                          max_iter,
+                          tolerancia,
                            raiz);	
   
   if(resultadorf == true) {
@@ -179,8 +168,8 @@ void raices_caso_1() {
   bool resultadosc = sc.raiz (
                               x0,
                               x1,
-                              tolerancia,
                               max_iter,
+                              tolerancia,
                               raiz);	
   
   if(resultadosc == true) {
@@ -206,20 +195,15 @@ void raices_caso_2 (){
   int iteracciones = 100;
   double tolerancia = 100;
   
- 
-  
-  cout << "\nCALCULO DE LAS RAICES DE UNA FUNCION CASO 2  \n";
-  
-  
   
   
   
   //Regla falsa
   reglafalsa rf(
                 [](double x) -> double {
-                  return pow(x,3) + (4*(pow(x, 2))) - 10;
+                  return (-5*pow(x,4) - 5.4*pow(x,3) + 10.56*pow(x,2) + 8.954*x + 1.6);
                 },
-                "f(x) = x^3 + 4x^2- 10"
+                "f(x) = -5*x^4 - 5.4*x^3 + 10.56*x^2 + 8.954*x + 1.6"
                );
   
   cout
@@ -249,8 +233,8 @@ void raices_caso_2 (){
   bool resultadorf = rf.raiz (
                               xi,
                               xs,
-                              tolerancia,
                               max_iter,
+                              tolerancia,
                               raiz);	
   
   if(resultadorf == true) {
@@ -333,8 +317,8 @@ void raices_caso_2 (){
   bool resultadosc = sc.raiz (
                               x0,
                               x1,
-                              tolerancia,
                               max_iter,
+                              tolerancia,
                               raiz);	
   
   if(resultadosc == true) {

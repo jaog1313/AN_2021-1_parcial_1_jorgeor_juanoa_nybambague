@@ -59,31 +59,32 @@ public:
             double &valor_raiz) {
     
     int contador=1;
-    
+    if (f(a) * f(b) > 0.0 ) {
+      return false;
+    }
     double xr, xa = a;
-    xr = b - f(b) * ((a - b) / (f(a) - f(b)));
+    
     while(contador < max_iter){
-      
-      
-      if (fabs(xr - xa) / fabs(xr) <= tolerancia) {
+      xr = b - f(b) * ((a - b) / (f(a) - f(b)));
+      double er = (xr -a) / xr;
+      if (fabs(er) <= tolerancia) {
         iteraciones = contador;
         valor_raiz = xr;
         return true;
       } 
       else {  
-        xa = xr; 
-        if (f(xr) * f(a) > 0) {  
-          a = xr;
-          xr = a - f(a) * ((b - a) / (f(b) - f(a)));
-        } else if (f(xr) * f(b) > 0) {
+        if (f(xr) * f(a) < 0) {  
           b = xr;
-          xr = b - f(b) * ((a - b) / (f(a) - f(b)));
+          //xr = a - f(a) * ((b - a) / (f(b) - f(a)));
+        } else {
+          a = xr;
+          //xr = b - f(b) * ( (a - b) / ( f(a) - f(b)) );
         }
       }
       contador++;
       
     }
-    return true;
+    return false;
   }
   
 private:

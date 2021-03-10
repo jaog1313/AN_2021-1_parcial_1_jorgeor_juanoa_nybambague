@@ -61,14 +61,14 @@ public:
   }
   
   
-  bool raiz(double p0, 
-            int max_iter, 
+  bool raiz(double p0,
             double tolerancia,
+            int max_iter, 
             double &valor_raiz) {
     
     int i = 1;
     double p, e;
-    if(fabs(f(p0) < tolerancia)){
+    if(fabs(f(p0)) < tolerancia){
       valor_raiz = p0;
       return true;
     }
