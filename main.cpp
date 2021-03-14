@@ -104,9 +104,9 @@ void raices_ejercicio_1() {
 						 return (-5*(x * x * x * x) - (5.4*(x * x * x)) + (10.56*(x * x)) +(8.954*(x))) + 1.6;
 					 },
 						 [](double x)->double {
-							 return ((625 * x * x * x) - (157.464*(x * x)) + (111.5136*(x)) +(8.954*(x)));
+							 return ((20 * x * x * x) - (16.2*(x * x)) + (21.12*(x)) +(8.954));
 						 },
-							 "f(x) = -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6"
+							 "f(x) = -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6" 
 							 );
 	
 	cout <<"\n\nMETODO PARA PROBAR LA FUNCION EN EL EJERCICIO 1: ";
@@ -193,52 +193,51 @@ void raices_ejercicio_2() {
 	int iteracciones = 100;
 	double tolerancia = 100;
 	
-	/*
-	//biseccion
-	biseccion bl(
-				 [](double x) -> double {
-					 return pow(x,3) + (4*(pow(x, 2))) - 10;
-				 },
-					 "f(x) = x^3 + 4x^2- 10"
-					 );
+//	//biseccion
+//	biseccion bl(
+//				 [](double x) -> double {
+//					 return pow(x,3) + (4*(pow(x, 2))) - 10;
+//				 },
+//					 "f(x) = x^3 + 4x^2- 10"
+//					 );
+//	
+//	cout << "\nCALCULO DE LAS RAICES DE UNA FUNCION CASO 2  \n";
+//	
+//	cout
+//		<< "\nMetodo de biseccion: "
+//		<< bl.str()
+//		<< endl;
+//	
+//	cout << "Ingrese los valores a y b del intervalo para evaluar la funcion: ";
+//	
+//	cin >> a >> b;
+//	
+//	cout << "Ingrese el numero de sub intervalos para imprimir la tabla: ";
+//	
+//	cin >> intervalos;
+//	
+//	bl.tabla(a, b, intervalos);
+//	
+//	cout << "Ingrese la tolerancia: ";
+//	cin >> tolerancia;
+//	
+//	cout << "Ingrese el numero maximo de iteracciones: ";
+//	cin >> max_iter;
+//	
+//	bool resultadobl = bl.raiz(
+//							   a,
+//							   b,
+//							   max_iter,
+//							   tolerancia,
+//							   raiz);	
+//	
+//	if(resultadobl == true) {
+//		cout << "Raiz encontrada: " << raiz << endl; 
+//	}else {
+//		cout << "No se pudo encontrar la raiz con los parametros dados " << endl;
+//	}
+//	
 	
-	cout << "\nCALCULO DE LAS RAICES DE UNA FUNCION CASO 2  \n";
-	
-	cout
-		<< "\nMetodo de biseccion: "
-		<< bl.str()
-		<< endl;
-	
-	cout << "Ingrese los valores a y b del intervalo para evaluar la funcion: ";
-	
-	cin >> a >> b;
-	
-	cout << "Ingrese el numero de sub intervalos para imprimir la tabla: ";
-	
-	cin >> intervalos;
-	
-	bl.tabla(a, b, intervalos);
-	
-	cout << "Ingrese la tolerancia: ";
-	cin >> tolerancia;
-	
-	cout << "Ingrese el numero maximo de iteracciones: ";
-	cin >> max_iter;
-	
-	bool resultadobl = bl.raiz(
-							   a,
-							   b,
-							   max_iter,
-							   tolerancia,
-							   raiz);	
-	
-	if(resultadobl == true) {
-		cout << "Raiz encontrada: " << raiz << endl; 
-	}else {
-		cout << "No se pudo encontrar la raiz con los parametros dados " << endl;
-	}
-	
-	*/
 	//Regla falsa
 	reglafalsa rf(
 				  [](double x) -> double {
