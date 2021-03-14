@@ -62,13 +62,13 @@ public:
 		iter = 2;
 		
 		//paso 2
-		while(iter < max_iter){
+		while(iter < max_iter){ //TODO: menor o igual?
 			double b = d2 + (h2 * a);
 			double c = f(x2);
-			double D = sqrt(b*b - 4*a*c);
+			double D = sqrt(b*b - 4*a*c); //Posiblemente hay raices complejas
 			//paso 4
-			double E = b - D;
-			if(fabs(b-D) < fabs(b + D)){
+			double E = b - D;//Aqui calcula el error
+			if(fabs(E) < fabs(b + D)){
 				E= b + D;
 			}
 			//paso 5
@@ -83,7 +83,7 @@ public:
 				<< "   error: " << er << endl;
 			
 			//verificacion
-			if(fabs(er) < tolerancia){
+			if(fabs(h) < tolerancia){ //fabs(er)? o fabs(h)?
 				valor_raiz = x3;
 				return true;
 			}
@@ -97,7 +97,7 @@ public:
 			d2 = (f(x2) - f(x1))/h2;
 			
 			a = (d2 - d1) / (h2 + h1);
-			iter+=1;
+			iter = iter + 1;
 		}
 		return false;
 	}

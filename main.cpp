@@ -48,7 +48,7 @@ void raices_ejercicio_1() {
 	int max_iter=1000000;
 	double tolerancia=0.0000001;
 	int intervalos = 100;
-	int iteracciones = 0.0;
+	int iteraciones = 0.0;
 	
 	
 	//Regla falsa f(x)= -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6
@@ -80,7 +80,7 @@ void raices_ejercicio_1() {
 	cin >> tolerancia;
 	
 	
-	cout << "Ingrese el numero maximo de iteracciones: ";
+	cout << "Ingrese el numero maximo de iteraciones: ";
 	cin >> max_iter;
 	
 	
@@ -128,9 +128,9 @@ void raices_ejercicio_1() {
 	cin >> tolerancia;
 	
 	cout <<"Ingrese la cantidad de iteraciones: ";
-	cin >> iteracciones;
+	cin >> iteraciones;
 	
-	if(nl.raiz(p0, tolerancia, iteracciones, raiz)) {
+	if(nl.raiz(p0, tolerancia, iteraciones, raiz)) {
 		cout << "Raiz encontrada: " << raiz << endl;
 	}else {
 		cout << "No se encontro raiz con el metodo newton raphson" <<endl;
@@ -166,11 +166,11 @@ void raices_ejercicio_1() {
 	cin >> tolerancia;
 	
 	
-	cout << "Ingrese el numero maximo de iteracciones: ";
-	cin >> iteracciones;
+	cout << "Ingrese el numero maximo de iteraciones: ";
+	cin >> iteraciones;
 	
 	
-	if(m.raiz(x0, x1, x2, max_iter, tolerancia, raiz, iteracciones)) {
+	if(m.raiz(x0, x1, x2, max_iter, tolerancia, raiz, iteraciones)) {
 		cout << "Raiz encontrada: " << raiz << endl; 
 	}else {
 		cout << "No se encontro raiz con el metodo Muller" << endl;
@@ -190,7 +190,7 @@ void raices_ejercicio_2() {
 	double raiz = 0.0;
 	int max_iter = 100;
 	int intervalos = 100;
-	int iteracciones = 100;
+	int iteraciones = 100;
 	double tolerancia = 100;
 	
 //	//biseccion
@@ -221,7 +221,7 @@ void raices_ejercicio_2() {
 //	cout << "Ingrese la tolerancia: ";
 //	cin >> tolerancia;
 //	
-//	cout << "Ingrese el numero maximo de iteracciones: ";
+//	cout << "Ingrese el numero maximo de iteraciones: ";
 //	cin >> max_iter;
 //	
 //	bool resultadobl = bl.raiz(
@@ -266,7 +266,7 @@ void raices_ejercicio_2() {
 	cin >> tolerancia;
 	
 	
-	cout << "Ingrese el numero maximo de iteracciones: ";
+	cout << "Ingrese el numero maximo de iteraciones: ";
 	cin >> max_iter;
 	
 	
@@ -313,9 +313,9 @@ void raices_ejercicio_2() {
 	cin >> tolerancia;
 	
 	cout <<"Ingrese la cantidad de iteraciones: ";
-	cin >> iteracciones;
+	cin >> iteraciones;
 	
-	if(nl.raiz(p0, tolerancia, iteracciones, raiz)) {
+	if(nl.raiz(p0, tolerancia, iteraciones, raiz)) {
 		cout << "Raiz encontrada: " << raiz << endl;
 	}else {
 		cout << "No se pudo encontrar la raiz con los parametros dados" <<endl;
@@ -350,7 +350,7 @@ void raices_ejercicio_2() {
 	cin >> tolerancia;
 	
 	
-	cout << "Ingrese el numero maximo de iteracciones: ";
+	cout << "Ingrese el numero maximo de iteraciones: ";
 	cin >> max_iter;
 	
 	
