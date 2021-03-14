@@ -55,8 +55,8 @@ public:
 				<<setw(10)
 				<<f(x)
 				<<endl;
-			x += paso;
-			n--;
+			x = x + paso;
+			n = n - 1;
 		}
 	}
 	

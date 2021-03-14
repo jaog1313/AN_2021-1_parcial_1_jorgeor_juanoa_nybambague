@@ -46,7 +46,7 @@ void raices_ejercicio_1() {
 	double p0 = 0.5;
 	double raiz = 0.0;
 	int max_iter=1000000;
-	double tolerancia=0.0000001;
+	double tolerancia=0.00000001;
 	int intervalos = 100;
 	int iteraciones = 0.0;
 	
@@ -54,7 +54,7 @@ void raices_ejercicio_1() {
 	//Regla falsa f(x)= -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6
 	reglafalsa rf(
 				  [](double x)->double {
-					  return (-5*(x * x * x * x) - (5.4*(x * x * x)) + (10.56*(x * x)) +(8.954*(x))) + 1.6;
+					  return (-5.0*pow(x,4) - 5.4*pow(x,3) + (10.56*pow(x,2)) +(8.954*(x))) + 1.6;
 				  },
 					  "f(x) = -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6"
 					  );
@@ -76,8 +76,8 @@ void raices_ejercicio_1() {
 	rf.tabla(xr, xa, intervalos);
 	
 	
-	cout << "Ingrese la tolerancia: ";
-	cin >> tolerancia;
+//	cout << "Ingrese la tolerancia: ";
+//	cin >> tolerancia;
 	
 	
 	cout << "Ingrese el numero maximo de iteraciones: ";
@@ -101,10 +101,10 @@ void raices_ejercicio_1() {
 	//Newton-Raphson f(x) = -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6
 	newtonraphson nl(
 					 [](double x)->double {
-						 return (-5*(x * x * x * x) - (5.4*(x * x * x)) + (10.56*(x * x)) +(8.954*(x))) + 1.6;
+						 return -5.0 * pow(x,4) - 5.4 * pow(x,3) + 10.56 * pow(x,2) +8.954 * x + 1.6;
 					 },
 						 [](double x)->double {
-							 return ((20 * x * x * x) - (16.2*(x * x)) + (21.12*(x)) +(8.954));
+							 return -20.0 * pow(x,3) - 16.2 * pow(x,2) + 21.12 * x + 8.954;
 						 },
 							 "f(x) = -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6" 
 							 );
@@ -115,17 +115,20 @@ void raices_ejercicio_1() {
 		<< nl.str() 
 		<< endl;
 	
+	cout <<"Ingrese el valor inicial de x: ";
+	cin >> p0;
+	xr = p0 - 1;
+	xa =  0.1;
 	cout << "Ingrese el numero de sub intervalos para imprimir la tabla: ";
 	
 	cin >> intervalos;
-	nl.tabla(a, b, intervalos);
-	
-	cout <<"Ingrese el valor inicial de x: ";
-	cin >> p0;
+	nl.tabla(xr, xa, intervalos);
 	
 	
-	cout <<"Ingrese la tolerancia: ";
-	cin >> tolerancia;
+	
+	
+//	cout <<"Ingrese la tolerancia: ";
+//	cin >> tolerancia;
 	
 	cout <<"Ingrese la cantidad de iteraciones: ";
 	cin >> iteraciones;
@@ -162,9 +165,9 @@ void raices_ejercicio_1() {
 	m.tabla(x0, x1, x2, intervalos);
 	
 	
-	cout << "Ingrese la tolerancia: ";
-	cin >> tolerancia;
-	
+//	cout << "Ingrese la tolerancia: ";
+//	cin >> tolerancia;
+//	
 	
 	cout << "Ingrese el numero maximo de iteraciones: ";
 	cin >> iteraciones;
@@ -262,8 +265,8 @@ void raices_ejercicio_2() {
 	rf.tabla(xi, xs, intervalos);
 	
 	
-	cout << "Ingrese la tolerancia: ";
-	cin >> tolerancia;
+//	cout << "Ingrese la tolerancia: ";
+//	cin >> tolerancia;
 	
 	
 	cout << "Ingrese el numero maximo de iteraciones: ";
@@ -309,8 +312,8 @@ void raices_ejercicio_2() {
 	cout <<"Ingrese el valor inicial de x: ";
 	cin >> p0;
 	
-	cout <<"Ingrese la tolerancia: ";
-	cin >> tolerancia;
+//	cout <<"Ingrese la tolerancia: ";
+//	cin >> tolerancia;
 	
 	cout <<"Ingrese la cantidad de iteraciones: ";
 	cin >> iteraciones;
@@ -346,8 +349,8 @@ void raices_ejercicio_2() {
 	rf.tabla(x0, x1, intervalos);
 	
 	
-	cout << "Ingrese la tolerancia: ";
-	cin >> tolerancia;
+//	cout << "Ingrese la tolerancia: ";
+//	cin >> tolerancia;
 	
 	
 	cout << "Ingrese el numero maximo de iteraciones: ";
