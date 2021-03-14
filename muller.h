@@ -22,7 +22,7 @@ public:
 	
 	
 	void tabla(double x0, double x1, double x2, int intervalos ) {
-		double paso = (x2-x1-x0)/intervalos;
+		double paso = (x2-x0)/intervalos;
 		cout << str() << endl;
 		cout
 			<<setw(10)
@@ -30,7 +30,7 @@ public:
 			<<setw(10)
 			<<"f(x)"
 			<< endl;
-		while (x0 < x1 + paso) {
+		while (x0 < x2 + paso) {
 			cout
 				<<setw(10)
 				<<x0
