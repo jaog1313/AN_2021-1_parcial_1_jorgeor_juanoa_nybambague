@@ -56,7 +56,7 @@ void raices_ejercicio_1() {
 				  [](double x)->double {
 					  return (-5.0 * pow(x,4) - 5.4 * pow(x,3) + 10.56 * pow(x,2) +8.954 * x + 1.6);
 				  },
-					  "f(x) = -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6"
+					  " "
 					  );
 	
 	cout <<"METODO PARA PROBAR LA FUNCION EN EL EJERCICIO 1: "; 
