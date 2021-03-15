@@ -54,7 +54,7 @@ void raices_ejercicio_1() {
 	//Regla falsa f(x)= -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6
 	reglafalsa rf(
 				  [](double x)->double {
-					  return (-5.0*pow(x,4) - 5.4*pow(x,3) + (10.56*pow(x,2)) +(8.954*(x))) + 1.6;
+					  return (-5.0 * pow(x,4) - 5.4 * pow(x,3) + 10.56 * pow(x,2) +8.954 * x + 1.6);
 				  },
 					  "f(x) = -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6"
 					  );
@@ -85,8 +85,8 @@ void raices_ejercicio_1() {
 	
 	
 	bool resultadorf = rf.raiz (
-								xr,
 								xa,
+								xr,
 								max_iter,
 								tolerancia,
 								raiz);	
@@ -143,7 +143,7 @@ void raices_ejercicio_1() {
 	//Metodo de Muller f(x) = -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6
 	muller m(
 			 [](double x)->double {
-				 return (-5*(x * x * x * x) - (5.4*(x * x * x)) + (10.56*(x * x)) +(8.954*(x))) + 1.6;
+				 return (-5.0 * pow(x,4) - 5.4 * pow(x,3) + 10.56 * pow(x,2) + 8.954 * x + 1.6);
 			 },
 				 "f(x) = -5x^4 - 5.4x^3 + 10.56x^2 + 8.954x + 1.6"
 				 );
@@ -170,7 +170,7 @@ void raices_ejercicio_1() {
 //	
 	
 	cout << "Ingrese el numero maximo de iteraciones: ";
-	cin >> iteraciones;
+	cin >> max_iter;
 	
 	
 	if(m.raiz(x0, x1, x2, max_iter, tolerancia, raiz, iteraciones)) {

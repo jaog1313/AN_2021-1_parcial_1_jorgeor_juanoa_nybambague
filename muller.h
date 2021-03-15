@@ -51,29 +51,33 @@ public:
 		
 		
 		//paso 1
-		double h1 = x1 - x0;
-		double h2 = x2 - x1;
+		double h1 = x1 -x0; //change order
+		double h2 = x2 - x1;// change order
 		
 		double d1 = (f(x1) - f(x0))/h1;
 		double d2 = (f(x2) - f(x1))/h2;
 		
 		double a = (d2 - d1) / (h2 + h1);
-		
 		iter = 2;
 		
 		//paso 2
 		while(iter < max_iter){ //TODO: menor o igual?
+			
+			
 			double b = d2 + (h2 * a);
 			double c = f(x2);
-			double D = sqrt(b*b - 4*a*c); //Posiblemente hay raices complejas
+			double D = sqrt(pow(b,2) - (4*a*c)); //Posiblemente hay raices complejas
+			double D0 = fabs(D);
+			double D1 = -fabs(D);
 			//paso 4
 			double E = b - D;//Aqui calcula el error
+			
 			if(fabs(E) < fabs(b + D)){
 				E= b + D;
 			}
 			//paso 5
 			double h = (-2.0 * c)/E;
-			//hallar el diguiente punto
+			//hallar el siguiente punto
 			double x3 = x2 + h;
 			double er = (x3 - x2) / x3;
 			cout << std::setprecision(10) 
@@ -83,7 +87,7 @@ public:
 				<< "   error: " << er << endl;
 			
 			//verificacion
-			if(fabs(h) < tolerancia){ //fabs(er)? o fabs(h)?
+			if(fabs(er) < tolerancia){ //fabs(er)? o fabs(h)?
 				valor_raiz = x3;
 				return true;
 			}

@@ -66,8 +66,8 @@ public:
 				
 				while(contador < max_iter){
 					xr = b - f(b) * ((a - b) / (f(a) - f(b)));
-					double er = (xr -a) / xr;
-					if (fabs(er) <= tolerancia) {
+					double er = (xr - a) / xr;
+					if (fabs(er) < tolerancia) { //TODO: Menor o igual? o menor?
 						iteraciones = contador;
 						valor_raiz = xr;
 						return true;
