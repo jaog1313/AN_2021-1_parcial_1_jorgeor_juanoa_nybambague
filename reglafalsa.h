@@ -64,10 +64,10 @@ public:
 				}
 				double xr = a;
 				
-				while(contador < max_iter){
+				while(contador <= max_iter){
 					xr = b - f(b) * ((a - b) / (f(a) - f(b)));
 					double er = (xr - a) / xr;
-					if (fabs(er) < tolerancia) { //TODO: Menor o igual? o menor?
+					if (fabs(er) <= tolerancia) { //TODO: Menor o igual? o menor?
 						iteraciones = contador;
 						valor_raiz = xr;
 						return true;
@@ -81,7 +81,7 @@ public:
 							//xr = b - f(b) * ( (a - b) / ( f(a) - f(b)) );
 						}
 					}
-					contador++;
+					contador = contador + 1;
 					
 				}
 				return false;

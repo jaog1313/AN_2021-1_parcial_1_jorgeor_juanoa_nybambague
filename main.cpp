@@ -192,6 +192,7 @@ void raices_ejercicio_2() {
 	double xs = 2.0;
 	double x0 = 0.0;
 	double x1 = 2.0;
+	double x2 = 2.0;
 	double p0;
 	double raiz = 0.0;
 	int max_iter = 100;
@@ -247,17 +248,27 @@ void raices_ejercicio_2() {
 	//Regla falsa
 	reglafalsa rf(
 				  [](double x) -> double {
-					  return pow(x,3) + (4*(pow(x, 2))) - 10;
+					  return (pow(10,-9) * (pow(450+273,4)-pow(x+273,4))-224.243047824);
 				  },
-					  "f(x) = x^3 + 4x^2- 10"
+					  "f(x) = (10^(-9))[(450 + 273)^4 - (x + 273)^4]-224.243047824"
 					  );
-	
+	reglafalsa rf2(
+				   [](double x) -> double {
+					   return (1.3 * pow((x - 25), 4/3 )-224.243047824);
+				   },
+					   "g(x) = 1.3*(x -25)^(4/3)-224.243047824"
+					   );
+	cout <<"METODO PARA PROBAR LA FUNCION EN EL EJERCICIO 2: "; 
 	cout
-		<< "\nMetodo de regla falsa:  "
+		<< "\nMetodo de regla falsa funcion 2.1:  "
 		<< rf.str()
 		<< endl;
+	cout
+		<< "\nMetodo de regla falsa funcion 2.2:  "
+		<< rf2.str()
+		<< endl;
 	
-	cout << "Ingrese los valores xi y xs del intervalo para evaluar la funcion: ";
+	cout << "Ingrese los valores xi y xs del intervalo para evaluar las funciones: ";
 	
 	cin >> xi >> xs;
 	
@@ -266,6 +277,7 @@ void raices_ejercicio_2() {
 	cin >> intervalos;
 	
 	rf.tabla(xi, xs, intervalos);
+	rf2.tabla(xi, xs, intervalos);
 	
 	
 //	cout << "Ingrese la tolerancia: ";
@@ -282,66 +294,92 @@ void raices_ejercicio_2() {
 								max_iter,
 								tolerancia,
 								raiz);	
-	
+	cout << "f(x)";
 	if(resultadorf == true) {
-		cout << "Raiz encontrada: " << raiz << endl; 
+		cout << "Raiz de f(x) encontrada: " << raiz << endl; 
 	}else {
-		cout << "No se pudo encontrar la raiz con los parametros dados " << endl;
+		cout << "No se pudo encontrar la raiz de f(x) con los parametros dados " << endl;
+	}
+	
+	bool resultadorf2 = rf2.raiz (
+								xi,
+								xs,
+								max_iter,
+								tolerancia,
+								raiz);	
+	cout << "g(x)";
+	if(resultadorf2 == true) {
+		cout << "Raiz de g(x) encontrada: " << raiz << endl; 
+	}else {
+		cout << "No se pudo encontrar la raiz de g(x) con los parametros dados " << endl;
 	}
 	
 	
-	//netown Raphson
-	newtonraphson nl(
-					 [](double x) -> double {
-						 return pow(x,3) + (4*(pow(x, 2))) - 10;
-					 },
-						 [](double x) -> double {
-							 return 3 * x * 2 + 8 * x;
-						 },
-							 "f(x) = x^3 + 4x^2- 10"
-							 );
-	
-	
-	cout
-		<< "\nMetodo de Newton-Raphson: "
-		<< nl.str() 
-		<< endl;
-	
-	cout << "Ingrese el numero de sub intervalos para imprimir la tabla: ";
-	
-	cin >> intervalos;
-	nl.tabla(a, b, intervalos);
-	
-	cout <<"Ingrese el valor inicial de x: ";
-	cin >> p0;
-	
-//	cout <<"Ingrese la tolerancia: ";
-//	cin >> tolerancia;
-	
-	cout <<"Ingrese la cantidad de iteraciones: ";
-	cin >> iteraciones;
-	
-	if(nl.raiz(p0, tolerancia, iteraciones, raiz)) {
-		cout << "Raiz encontrada: " << raiz << endl;
-	}else {
-		cout << "No se pudo encontrar la raiz con los parametros dados" <<endl;
-	};
-	
+//	//netown Raphson
+//	newtonraphson nl(
+//					 [](double x) -> double {
+//						 return (pow(10,-9) * (pow(450+273,4)-pow(x+273,4))-224.243047824);
+//					 },
+//						 [](double x) -> double {
+//							 return pow(10,-9) * (-4 * 273 * pow(x+273,3));
+//						 },
+//							 "f(x) = (10^(-9))[(450 + 273)^4 - (x + 273)^4]-224.243047824"
+//							 );
+//	
+//	
+//	
+//	
+//	cout
+//		<< "\nMetodo de Newton-Raphson: "
+//		<< nl.str() 
+//		<< endl;
+//	
+//	cout << "Ingrese el numero de sub intervalos para imprimir la tabla: ";
+//	
+//	cin >> intervalos;
+//	nl.tabla(a, b, intervalos);
+//	
+//	cout <<"Ingrese el valor inicial de x: ";
+//	cin >> p0;
+//	
+////	cout <<"Ingrese la tolerancia: ";
+////	cin >> tolerancia;
+//	
+//	cout <<"Ingrese la cantidad de iteraciones: ";
+//	cin >> iteraciones;
+//	
+//	if(nl.raiz(p0, tolerancia, iteraciones, raiz)) {
+//		cout << "Raiz encontrada: " << raiz << endl;
+//	}else {
+//		cout << "No se pudo encontrar la raiz con los parametros dados" <<endl;
+//	};
+//	
 	
 	//Secante
 	secante sc(
 			   [](double x) -> double {
-				   return pow(x,3) + (4*(pow(x, 2))) - 10;
+				   return (pow(10,-9) * (pow(450+273,4)-pow(x+273,4))-224.243047824);
 			   },
-				   "f(x) = x^3 + 4x^2- 10"
+				   "f(x) = (10^(-9))[(450 + 273)^4 - (x + 273)^4]-224.243047824"
 				   );
-	
+	secante sc2(
+				   [](double x) -> double {
+					   return (1.3 * pow((x - 25), 4/3 )-224.243047824);
+				   },
+					   "g(x) = 1.3*(x -25)^(4/3)-224.243047824"
+					   );
+	cout <<"METODO PARA PROBAR LA FUNCION EN EL EJERCICIO 2: "; 
 	cout
-		<< "\nMetodo de la secante:  "
+		<< "\nMetodo de la secante funcion 2.1:  "
 		<< sc.str()
 		<< endl;
+	cout
+		<< "\nMetodo de la secante funcion 2.2:  "
+		<< sc2.str()
+		<< endl;
 	
-	cout << "Ingrese los valores x0 y x1 del intervalo para evaluar la funcion: ";
+	
+	cout << "Ingrese los valores x0 y x1 del intervalo para evaluar las funciones: ";
 	
 	cin >> x0 >> x1;
 	
@@ -349,7 +387,8 @@ void raices_ejercicio_2() {
 	
 	cin >> intervalos;
 	
-	rf.tabla(x0, x1, intervalos);
+	sc.tabla(x0, x1, intervalos);
+	sc2.tabla(x0, x1, intervalos);
 	
 	
 //	cout << "Ingrese la tolerancia: ";
@@ -366,11 +405,77 @@ void raices_ejercicio_2() {
 								max_iter,
 								tolerancia,
 								raiz);	
-	
+	cout << "f(x)";
 	if(resultadosc == true) {
+		cout << "Raiz encontrada en f(x): " << raiz << endl; 
+	}else {
+		cout << "No se pudo encontrar la raiz de f(x) con los parametros dados " << endl;
+	}
+	bool resultadosc2 = sc2.raiz (
+								x0,
+								x1,
+								max_iter,
+								tolerancia,
+								raiz);	
+	cout << "g(x)";
+	if(resultadosc2 == true) {
 		cout << "Raiz encontrada: " << raiz << endl; 
 	}else {
-		cout << "No se pudo encontrar la raiz con los parametros dados " << endl;
+		cout << "No se pudo encontrar la raiz g(x) con los parametros dados " << endl;
+	}
+	
+	//Metodo de Muller f(x) = sen(2x) + 2e^(-2x)sen(x) - 2e^(-x)sen(2x) - e^(-2x)
+	muller m(
+			 [](double x)->double {
+				 return sin(2*x) + 2 * exp(-2*x) * sin(x) - 2 * exp(-x) * sin(2*x)- exp(-2*x);
+			 },
+				 "f(x) = sen(2x) + 2e^(-2x)sen(x) - 2e^(-x)sen(2x) - e^(-2x) "
+				 );
+	
+	muller m2(
+			  [](double x) -> double {
+				  return (1.3 * pow((x - 25), 4/3 )-224.243047824);
+			  },
+				  "g(x) = 1.3*(x -25)^(4/3)-224.243047824"
+				  );
+	
+	
+	
+	cout <<"METODO PARA PROBAR LA FUNCION EN EL EJERCICIO 2: "; 
+	cout
+		<< "\n\nMETODO DE MULLER f(x)\n"
+		<< m.str()
+		<< endl;
+	cout
+		<< "\n\nMETODO DE MULLER g(x)\n"
+		<< m2.str()
+		<< endl;
+	
+	cout << "Ingrese los valores x0  x1 y x2 del intervalo para evaluar la funcion: ";
+	
+	cin >> x0 >> x1 >> x2;
+	
+	cout << "Ingrese el numero de sub intervalos para imprimir la tabla: ";
+	
+	cin >> intervalos;
+	
+	m.tabla(x0, x1, x2, intervalos);
+	m2.tabla(x0, x1, x2, intervalos);
+	
+	cout << "Ingrese el numero maximo de iteraciones: ";
+	cin >> max_iter;
+	
+	
+	if(m.raiz(x0, x1, x2, max_iter, tolerancia, raiz, iteraciones)) {
+		cout << "Raiz encontrada en f(x): " << raiz << endl; 
+	}else {
+		cout << "No se encontro raiz en f(x) con el metodo Muller" << endl;
+	}
+	
+	if(m2.raiz(x0, x1, x2, max_iter, tolerancia, raiz, iteraciones)) {
+		cout << "Raiz encontrada g(x): " << raiz << endl; 
+	}else {
+		cout << "No se encontro raiz en g(x)con el metodo Muller" << endl;
 	}
 }
 
@@ -383,7 +488,7 @@ void raices_ejercicio_3() {
 	double x0 = 0.0;
 	double x1 = 2.0;
 	double x2 = 2.0;
-	double p0;
+	double p0 = 0;
 	double raiz = 0.0;
 	int max_iter = 100;
 	int intervalos = 100;
