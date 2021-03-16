@@ -21,6 +21,7 @@ using std::function;
 
 void raices_ejercicio_1();
 void raices_ejercicio_2();
+void raices_ejercicio_3();
 
 int main (int argc, char *argv[]) {
 	
@@ -29,6 +30,8 @@ int main (int argc, char *argv[]) {
 	
 	//Caso 2: f(x) = x^3 + 4x^2 - 10
 	raices_ejercicio_2();
+	
+	raices_ejercicio_3();
 	
 	return 0;
 }
@@ -368,6 +371,146 @@ void raices_ejercicio_2() {
 		cout << "Raiz encontrada: " << raiz << endl; 
 	}else {
 		cout << "No se pudo encontrar la raiz con los parametros dados " << endl;
+	}
+}
+
+//EJERCICIO 3:
+void raices_ejercicio_3() {
+	double a = 0.0;
+	double b = 2.5;
+	double xr = 0.0;
+	double xa = 2.0;
+	double x0 = 0.0;
+	double x1 = 2.0;
+	double x2 = 2.0;
+	double p0;
+	double raiz = 0.0;
+	int max_iter = 100;
+	int intervalos = 100;
+	int iteraciones = 100;
+	double tolerancia = 100;
+	
+	
+	//Metodo de la regla falsa f(x) = sen(2x) + 2e^(-2x)sen(x) - 2e^(-x)sen(2x) - e^(-2x) 
+	reglafalsa rf(
+				  [](double x)->double {
+					  return sin(2*x) + 2 * exp(-2*x) * sin(x) - 2 * exp(-x) * sin(2*x)- exp(-2*x);
+				  },
+					  "f(x) = sen(2x) + 2e^(-2x)sen(x) - 2e^(-x)sen(2x) - e^(-2x) "
+					  );
+	
+	cout <<"METODO PARA PROBAR LA FUNCION EN EL EJERCICIO 3: "; 
+	cout
+		<< "\n\nMETODO DE REGLA FALSA\n" 
+		<< rf.str()
+		<< endl;
+	
+	cout << "Ingrese los valores xr y xa del intervalo para evaluar la funcion: ";
+	
+	cin >> xr >> xa;
+	
+	cout << "Ingrese el numero de sub intervalos para imprimir la tabla: ";
+	
+	cin >> intervalos;
+	
+	rf.tabla(xr, xa, intervalos);
+	
+	
+	cout << "Ingrese el numero maximo de iteraciones: ";
+	cin >> max_iter;
+	
+	
+	bool resultadorf = rf.raiz (
+								xa,
+								xr,
+								max_iter,
+								tolerancia,
+								raiz);	
+	
+	if(resultadorf == true) {
+		cout << "Raiz encontrada: " << raiz << endl; 
+	}else {
+		cout << "No se encontro raiz con el metodo de regla falsa" << endl;
+	}
+	
+	
+	
+	
+	//Secante f(x) = sen(2x) + 2e^(-2x)sen(x) - 2e^(-x)sen(2x) - e^(-2x) 
+	secante sc(
+			   [](double x)->double {
+				   return sin(2*x) + 2 * exp(-2*x) * sin(x) - 2 * exp(-x) * sin(2*x)- exp(-2*x);
+			   },
+				   "f(x) = sen(2x) + 2e^(-2x)sen(x) - 2e^(-x)sen(2x) - e^(-2x) "				   );
+	
+	cout <<"METODO PARA PROBAR LA FUNCION EN EL EJERCICIO 3: "; 
+	cout
+		<< "\n\nMETODO DE SECANTE\n" 
+		<< sc.str()
+		<< endl;
+	
+	cout << "Ingrese los valores x0 y x1 del intervalo para evaluar la funcion: ";
+	
+	cin >> x0 >> x1;
+	
+	cout << "Ingrese el numero de sub intervalos para imprimir la tabla: ";
+	
+	cin >> intervalos;
+	
+	rf.tabla(x0, x1, intervalos);
+	
+	
+	cout << "Ingrese el numero maximo de iteraciones: ";
+	cin >> max_iter;
+	
+	
+	bool resultadosc = sc.raiz (
+								x0,
+								x1,
+								max_iter,
+								tolerancia,
+								raiz);	
+	
+	if(resultadosc == true) {
+		cout << "Raiz encontrada: " << raiz << endl; 
+	}else {
+		cout << "No se encontro raiz con el metodo de secante " << endl;
+	}
+	
+	
+	//Metodo de Muller f(x) = sen(2x) + 2e^(-2x)sen(x) - 2e^(-x)sen(2x) - e^(-2x)
+	muller m(
+			 [](double x)->double {
+				 return sin(2*x) + 2 * exp(-2*x) * sin(x) - 2 * exp(-x) * sin(2*x)- exp(-2*x);
+			 },
+				 "f(x) = sen(2x) + 2e^(-2x)sen(x) - 2e^(-x)sen(2x) - e^(-2x) "
+				 );
+	
+	cout <<"\n\nMETODO PARA PROBAR LA FUNCION EN EL EJERCICIO 3: ";
+	cout
+		<< "\n\nMETODO DE MULLER\n"
+		<< m.str()
+		<< endl;
+	
+	cout << "Ingrese los valores x0  x1 y x2 del intervalo para evaluar la funcion: ";
+	
+	cin >> x0 >> x1 >> x2;
+	
+	cout << "Ingrese el numero de sub intervalos para imprimir la tabla: ";
+	
+	cin >> intervalos;
+	
+	m.tabla(x0, x1, x2, intervalos);
+	
+	
+	cout << "Ingrese el numero maximo de iteraciones: ";
+	cin >> max_iter;
+	
+	
+	if(m.raiz(x0, x1, x2, max_iter, tolerancia, raiz, iteraciones)) {
+		cout << "Raiz encontrada: " << raiz << endl; 
+	}else {
+		cout << "No se encontro raiz con el metodo Muller" << endl;
 	}
 }
 
