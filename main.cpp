@@ -197,7 +197,7 @@ void raices_ejercicio_2() {
 	int max_iter = 100;
 	int intervalos = 100;
 	int iteraciones = 100;
-	double tolerancia = 100;
+	double tolerancia = 0.0000000001;
 	
 //	//biseccion
 //	biseccion bl(
@@ -388,13 +388,13 @@ void raices_ejercicio_3() {
 	int max_iter = 100;
 	int intervalos = 100;
 	int iteraciones = 100;
-	double tolerancia = 100;
+	double tolerancia = 0.00000001;
 	
 	
 	//Metodo de la regla falsa f(x) = sen(2x) + 2e^(-2x)sen(x) - 2e^(-x)sen(2x) - e^(-2x) 
 	reglafalsa rf(
 				  [](double x)->double {
-					  return sin(2*x) + 2 * exp(-2*x) * sin(x) - 2 * exp(-x) * sin(2*x)- exp(-2*x);
+					  return sin(2 * x) + 2 * sin(x) * exp((-2) * x)  - 2 * exp(-x) * sin(2 * x)- exp(-2 * x);
 				  },
 					  "f(x) = sen(2x) + 2e^(-2x)sen(x) - 2e^(-x)sen(2x) - e^(-2x) "
 					  );
