@@ -35,7 +35,7 @@ cursor=61:3
 open=true
 [header]
 path=muller.h
-cursor=90:20
+cursor=87:3
 open=true
 [config]
 name=Debug
